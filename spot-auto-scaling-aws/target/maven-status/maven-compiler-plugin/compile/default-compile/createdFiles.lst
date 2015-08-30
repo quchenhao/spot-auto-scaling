@@ -1,5 +1,7 @@
 auto_scaling\configuration\aws\AWSCredentialsWrapper.class
+auto_scaling\online\ssh\SSHOnlineTask.class
 auto_scaling\util\aws\AmazonClient.class
+auto_scaling\configuration\ssh\SSHLoadBalancerLoader.class
 auto_scaling\configuration\aws\AWSConfigurationLoader.class
 auto_scaling\configuration\aws\AWSMonitorsLoader.class
 auto_scaling\cloud\aws\AWSOSs.class
@@ -11,6 +13,7 @@ auto_scaling\configuration\aws\AWSSystemStatusLoader.class
 auto_scaling\monitor\aws\AWSSpotRequestsMonitor.class
 auto_scaling\monitor\aws\AWSHealthCheckMonitor.class
 auto_scaling\handler\aws\AWSScalingEventHandler.class
+auto_scaling\loadbalancer\ssh\SSHLoadBalancer.class
 auto_scaling\configuration\aws\AWSXMLInstanceConfigurationLoader.class
 auto_scaling\configuration\aws\AWSEventHandlersLoader.class
 auto_scaling\monitor\aws\AWSSpotPriceMonitor.class
