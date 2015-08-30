@@ -1,4 +1,4 @@
-package auto_scaling.online.example;
+package auto_scaling.online.ssh;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,12 +21,12 @@ import auto_scaling.online.SSHScriptOnlineTask;
 * @date 06/06/2015 3:08:42 pm 
 *  
 */
-public class ExampleOnlineTask extends SSHScriptOnlineTask {
+public class SSHOnlineTask extends SSHScriptOnlineTask {
 
 	/** 
 	* <p>Description: </p>  
 	*/
-	public ExampleOnlineTask() {}
+	public SSHOnlineTask() {}
 	
 	/* (non-Javadoc) 
 	* <p>Title: performTask</p> 
