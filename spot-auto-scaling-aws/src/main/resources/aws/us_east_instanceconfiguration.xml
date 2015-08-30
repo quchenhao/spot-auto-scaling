@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<resource_types>
+		<cpu threshold="xxx (0.75)" max_threshold="xxx (0.9)"/>
+		<memory threshold="xxx (0.75)" max_threshold="xxx (0.9)"/>
+	</resource_types>
+	<instance_types>
+		<instance_type>
+			<template type="m3.medium" vcpu="1" ecu="1.5" memory="3.75" os="Linux/UNIX" is_support_hvm="true" is_support_paravirtual="true" on_demand_price="0.07"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="m3.large" vcpu="2" ecu="6.5" memory="7.5" os="Linux/UNIX" is_support_hvm="true" is_support_paravirtual="true" on_demand_price="0.14"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="m3.xlarge" vcpu="4" ecu="13" memory="15" os="Linux/UNIX" is_support_hvm="true" is_support_paravirtual="true" on_demand_price="0.280"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="c3.large" vcpu="2" ecu="7" memory="3.75" os="Linux/UNIX" is_support_hvm="true" is_support_paravirtual="true" on_demand_price="0.105"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="c3.xlarge" vcpu="4" ecu="14" memory="7.5" os="Linux/UNIX" is_support_hvm="true" is_support_paravirtual="true" on_demand_price="0.210"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="r3.large" vcpu="2" ecu="6.5" memory="15" os="Linux/UNIX" is_support_hvm="true" is_support_paravirtual="false" on_demand_price="0.175"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="m1.small" vcpu="1" ecu="0.5" memory="1.7" os="Linux/UNIX" is_support_hvm="false" is_support_paravirtual="true" on_demand_price="0.044"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="m1.medium" vcpu="1" ecu="1" memory="3.75" os="Linux/UNIX" is_support_hvm="false" is_support_paravirtual="true" on_demand_price="0.087"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="m1.large" vcpu="2" ecu="4" memory="7.5" os="Linux/UNIX" is_support_hvm="false" is_support_paravirtual="true" on_demand_price="0.175"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="m1.xlarge" vcpu="4" ecu="8" memory="15" os="Linux/UNIX" is_support_hvm="false" is_support_paravirtual="true" on_demand_price="0.350"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="c1.medium" vcpu="2" ecu="5" memory="1.7" os="Linux/UNIX" is_support_hvm="false" is_support_paravirtual="true" on_demand_price="0.130"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="m2.xlarge" vcpu="2" ecu="6.5" memory="17.1" os="Linux/UNIX" is_support_hvm="false" is_support_paravirtual="true" on_demand_price="0.245"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+		<instance_type>
+			<template type="m2.2xlarge" vcpu="4" ecu="13" memory="34.2" os="Linux/UNIX" is_support_hvm="false" is_support_paravirtual="true" on_demand_price="0.490"/>
+			<application_usage_profile cpu="0.07" memory="0.01"/>
+		</instance_type>
+	</instance_types>
+	<on_demand_instance_type type="c3.large" os="Linux/UNIX"/>
+</configuration>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d %-7level %logger{36} $ %msg%n"/>
+    </Console>
+    <RollingRandomAccessFile name="AppLog" fileName="xxx\app.log"
+                 filePattern="xxx\app\app-%d{yyyy-MM-dd-HH}-%i.log.gz">
+      <PatternLayout pattern="%d %-7level %logger{36} $ %msg%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="100000"/>
+    </RollingRandomAccessFile>
+    <RollingRandomAccessFile name="EventLog" fileName="xxx\event.log"
+                 filePattern="xxx\event\event-%d{yyyy-MM-dd-HH}-%i.log.gz">
+      <PatternLayout pattern="%d %-7level %logger{36} $ %msg%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="100000"/>
+    </RollingRandomAccessFile>
+    <RollingRandomAccessFile name="SpotPriceLog" fileName="xxx\spot_price.log"
+                 filePattern="xxx\spot_price\spot_price-%d{yyyy-MM-dd-HH}-%i.log.gz">
+      <PatternLayout pattern="%d %-7level %logger{36} $ %msg%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="100000"/>
+    </RollingRandomAccessFile>
+    <RollingRandomAccessFile name="LoadBalancerLog" fileName="xxx\load_balancer.log"
+                 filePattern="xxx\load_balancer\load_balancer-%d{yyyy-MM-dd-HH}-%i.log.gz">
+      <PatternLayout pattern="%d %-7level %logger{36} $ %msg%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="100000"/>
+    </RollingRandomAccessFile>
+    <RollingRandomAccessFile name="OnlineTaskLog" fileName="xxx\online_task.log"
+                 filePattern="xxx\online_task\online_task-%d{yyyy-MM-dd-HH}-%i.log.gz">
+      <PatternLayout pattern="%d %-7level %logger{36} $ %msg%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="100000"/>
+    </RollingRandomAccessFile>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="Console" level="info" />
+    </Root>
+    <Logger name="auto_scaling.core.SpotInstanceScalar" level="all" additivity="false">
+      <AppenderRef ref="AppLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+    <Logger name="auto_scaling.core.SystemStatus" level="all" additivity="false">
+      <AppenderRef ref="AppLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+    <Logger name="auto_scaling.handler.EventHandler" level="all" additivity="false">
+      <AppenderRef ref="EventLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+    <Logger name="auto_scaling.monitor.Monitor" level="all" additivity="false">
+      <AppenderRef ref="EventLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+    <Logger name="auto_scaling.monitor.SpotPriceMonitor" level="all" additivity="false">
+      <AppenderRef ref="SpotPriceLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+    <Logger name="auto_scaling.core.ConfigurationManager" level="all" additivity="false">
+      <AppenderRef ref="AppLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+    <Logger name="auto_scaling.loadbalancer.LoadBalancer" level="all" additivity="false">
+      <AppenderRef ref="LoadBalancerLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+    <Logger name="auto_scaling.online.IOnlineTask" level="all" additivity="false">
+      <AppenderRef ref="OnlineTaskLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+    <Logger name="auto_scaling.configuration.ISystemStatusLoader" level="all" additivity="false">
+      <AppenderRef ref="EventLog" level="all"/>
+      <AppenderRef ref="Console" level="error" />
+    </Logger>
+  </Loggers>
+</Configuration>
