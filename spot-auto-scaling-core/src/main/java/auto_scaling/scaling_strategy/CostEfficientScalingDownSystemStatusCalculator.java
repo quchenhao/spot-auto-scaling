@@ -34,10 +34,6 @@ public class CostEfficientScalingDownSystemStatusCalculator implements IScalingD
 	* @Fields scalingPoliciesConfiguration : the scaling policies
 	*/ 
 	protected IScalingPoliciesConfiguration scalingPoliciesConfiguration;
-	/** 
-	* @Fields limits : the limitations
-	*/ 
-	protected Limits limits;
 	
 	/** 
 	* <p>Description: </p>  
@@ -57,20 +53,6 @@ public class CostEfficientScalingDownSystemStatusCalculator implements IScalingD
 		}
 		this.scalingPoliciesConfiguration = scalingPoliciesConfiguration;
 	}
-
-	/* (non-Javadoc) 
-	* <p>Title: setLimits</p> 
-	* <p>Description: </p> 
-	* @param limits 
-	* @see auto_scaling.scaling_strategy.IScalingDownSystemStatusCalculator#setLimits(auto_scaling.configuration.Limits) 
-	*/
-	@Override
-	public synchronized void setLimits(Limits limits) {
-		if (limits == null) {
-			throw new NullPointerException("limits cannot be null");
-		}
-		this.limits = limits;
-	}
 	
 	/* (non-Javadoc) 
 	* <p>Title: calculateTargetSystemStatus</p> 
@@ -83,6 +65,7 @@ public class CostEfficientScalingDownSystemStatusCalculator implements IScalingD
 	@Override
 	public synchronized TargetSystemStatus calculateTargetSystemStatus(
 			SystemStatus systemStatus, OnDemandInstanceStatus onDemandInstance) {
+		Limits limits = Limits.getLimits();
 		IScalingUtil scalingUtil; 
 		ITruthfulBiddingPriceCalculator truthfulBiddingPriceCalculator; 
 		synchronized (scalingPoliciesConfiguration) {

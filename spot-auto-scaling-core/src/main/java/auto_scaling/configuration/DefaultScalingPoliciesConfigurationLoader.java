@@ -37,7 +37,7 @@ public class DefaultScalingPoliciesConfigurationLoader implements IScalingPolici
 	* @see auto_scaling.configuration.IScalingPoliciesConfigurationLoader#load(auto_scaling.configuration.Limits, java.io.InputStream) 
 	*/
 	@Override
-	public IScalingPoliciesConfiguration load(Limits limits, InputStream inputStream)
+	public IScalingPoliciesConfiguration load(InputStream inputStream)
 			throws InstantiationException, IllegalAccessException,
 			ClassNotFoundException, IllegalArgumentException,
 			InvocationTargetException, NoSuchMethodException, SecurityException, IOException {
@@ -59,11 +59,9 @@ public class DefaultScalingPoliciesConfigurationLoader implements IScalingPolici
 		
 		IScalingUpSystemStatusCalculator scalingUpSystemStatusCalculator = (IScalingUpSystemStatusCalculator)(Class.forName(scalingUpSystemStatusCalculcatorClass).newInstance());
 		scalingUpSystemStatusCalculator.setScalingPoliciesConfiguration(scalingPoliciesConfiguration);
-		scalingUpSystemStatusCalculator.setLimits(limits);
 		
 		IScalingDownSystemStatusCalculator scalingDownSystemStatusCalculator = (IScalingDownSystemStatusCalculator)(Class.forName(scalingDownSystemStatusCalculcatorClass).newInstance());
 		scalingDownSystemStatusCalculator.setScalingPoliciesConfiguration(scalingPoliciesConfiguration);
-		scalingDownSystemStatusCalculator.setLimits(limits);
 		
 		synchronized(scalingPoliciesConfiguration) {
 			scalingPoliciesConfiguration.setScalingUtil(scalingUtil);

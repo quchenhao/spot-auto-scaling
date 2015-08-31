@@ -31,28 +31,11 @@ public class CostEfficientScalingUpSystemStatusCalculator implements IScalingUpS
 	* @Fields scalingPoliciesConfiguration : the scaling policies configuration
 	*/ 
 	protected IScalingPoliciesConfiguration scalingPoliciesConfiguration;
-	/** 
-	* @Fields limits : the limitations
-	*/ 
-	protected Limits limits;
 	
 	/** 
 	* <p>Description: empty initialization</p>  
 	*/
 	public CostEfficientScalingUpSystemStatusCalculator() {}
-	
-	/* (non-Javadoc) 
-	* <p>Title: setLimits</p> 
-	* <p>Description: </p> 
-	* @param limits 
-	* @see auto_scaling.scaling_strategy.IScalingUpSystemStatusCalculator#setLimits(auto_scaling.configuration.Limits) 
-	*/
-	public synchronized void setLimits(Limits limits) {
-		if (limits == null) {
-			throw new NullPointerException("limits cannot be null");
-		}
-		this.limits = limits;
-	}
 	
 	/* (non-Javadoc) 
 	* <p>Title: setScalingPoliciesConfiguration</p> 
@@ -77,7 +60,7 @@ public class CostEfficientScalingUpSystemStatusCalculator implements IScalingUpS
 	*/
 	@Override
 	public synchronized TargetSystemStatus calculateTargetSystemStatus(SystemStatus systemStatus) {
-		
+		Limits limits = Limits.getLimits();
 		IScalingUtil scalingUtil; 
 		ITruthfulBiddingPriceCalculator truthfulBiddingPriceCalculator; 
 		synchronized (scalingPoliciesConfiguration) {

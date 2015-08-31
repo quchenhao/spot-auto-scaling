@@ -8,6 +8,8 @@ import java.util.Queue;
 
 import auto_scaling.cloud.InstanceStatus;
 import auto_scaling.cloud.RunningStatus;
+import auto_scaling.configuration.Limits;
+import auto_scaling.core.FaultTolerantLevel;
 import auto_scaling.core.SystemStatus;
 import auto_scaling.event.Event;
 import auto_scaling.event.EventDataName;
@@ -70,7 +72,8 @@ public class BillingPeriodMonitor extends Monitor{
 	public synchronized void doMonitoring() {
 		SystemStatus systemStatus = SystemStatus.getSystemStatus();
 		Collection<InstanceStatus> allInstances = systemStatus.getAllInstances();
-		
+		Limits limits = Limits.getLimits();
+		FaultTolerantLevel ftLevel = systemStatus.getFaultTolerantLevel();
 		long rightNow = System.currentTimeMillis()/60000;
 		
 		for (InstanceStatus instanceStatus : allInstances) {
@@ -79,7 +82,7 @@ public class BillingPeriodMonitor extends Monitor{
 				Date launchTime = instanceStatus.getLaunchTime();
 				long runningTime = rightNow - launchTime.getTime() / 60000;
 				int passingMinutes = (int) (runningTime % 60);
-				if (passingMinutes >= endingThreshold || (!systemStatus.isSpotEnabled() && passingMinutes >= modeSwitchThreshold)) {
+				if (passingMinutes >= endingThreshold || (!systemStatus.isSpotEnabled() && passingMinutes >= modeSwitchThreshold && limits.getMaxChosenSpotTypesNum() > ftLevel.getLevel())) {
 					
 					monitorLog.info(logFormatter.getMessage("In " + monitorName + " Thread"));
 					

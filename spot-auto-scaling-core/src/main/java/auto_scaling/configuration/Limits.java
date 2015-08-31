@@ -21,9 +21,14 @@ public class Limits {
 	protected int maxChosenSpotTypesNum;
 	
 	/** 
+	* @Fields limits : the singlton limits
+	*/ 
+	protected static Limits limits = new Limits();
+	
+	/** 
 	* <p>Description: empty initialization</p>  
 	*/
-	public Limits(){}
+	private Limits(){}
 	
 	/**
 	 * @Title: getMaxChosenSpotTypesNum 
@@ -72,5 +77,15 @@ public class Limits {
 			throw new IllegalArgumentException("minimum on demand capacity threshold should be between 0 and 1: " + onDemandCapacityThreshold);
 		}
 		this.onDemandCapacityThreshold = onDemandCapacityThreshold;
+	}
+	
+	/**
+	 * @Title: getLimits 
+	 * @Description: get the limits
+	 * @return the limits
+	 * @throws
+	 */
+	public static Limits getLimits() {
+		return limits;
 	}
 }

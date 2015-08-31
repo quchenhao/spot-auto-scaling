@@ -30,7 +30,6 @@ import auto_scaling.configuration.IOnlineTaskLoader;
 import auto_scaling.configuration.IScalingPoliciesConfiguration;
 import auto_scaling.configuration.IScalingPoliciesConfigurationLoader;
 import auto_scaling.configuration.ISystemStatusLoader;
-import auto_scaling.configuration.Limits;
 import auto_scaling.event.EventGenerator;
 import auto_scaling.handler.EventHandler;
 import auto_scaling.handler.EventHandlerManager;
@@ -192,12 +191,11 @@ public class SpotInstanceScalar {
 		mainLog.info(logFormatter.getMessage("Initializing Limits"));
 		String limitsLoaderClass = properties.getProperty(LIMITS_CONFIGURATION_LOADER);
 		String limitsConfigurationFile = properties.getProperty(LIMITS_CONFIGURATION_FILE);
-		Limits limits = null;
 		try {
 			ILimitsLoader limitsLoader = (ILimitsLoader)(Class.forName(limitsLoaderClass).newInstance());
 			File file = new File(directory, limitsConfigurationFile);
 			InputStream limitsStream = new FileInputStream(file);
-			limits = limitsLoader.load(limitsStream);
+			limitsLoader.load(limitsStream);
 			limitsStream.close();
 		} catch (Exception e) {
 			mainLog.fatal(logFormatter.getExceptionString(e));
@@ -213,7 +211,7 @@ public class SpotInstanceScalar {
 			IScalingPoliciesConfigurationLoader scalingPoliciesConfigurationLoader = (IScalingPoliciesConfigurationLoader)(Class.forName(scalingPoliciesConfigurationClass).newInstance());
 			File file = new File(directory, scalingPoliciesConfigurationFile);
 			InputStream scalingPoliciesStream = new FileInputStream(file);
-			scalingPoliciesConfiguration = scalingPoliciesConfigurationLoader.load(limits, scalingPoliciesStream);
+			scalingPoliciesConfiguration = scalingPoliciesConfigurationLoader.load(scalingPoliciesStream);
 			scalingPoliciesStream.close();
 		}
 		catch(Exception e) {

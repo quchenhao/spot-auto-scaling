@@ -16,13 +16,12 @@ public class DefaultLimitsLoader implements ILimitsLoader {
 	* <p>Title: load</p> 
 	* <p>Description: </p> 
 	* @param inputStream
-	* @return
 	* @throws Exception 
 	* @see auto_scaling.configuration.ILimitsLoader#load(java.io.InputStream) 
 	*/
 	@Override
-	public Limits load(InputStream inputStream) throws Exception {
-		Limits limits = new Limits();
+	public void load(InputStream inputStream) throws Exception {
+		Limits limits = Limits.getLimits();
 		Properties properties = new Properties();
 		properties.load(inputStream);
 		
@@ -31,8 +30,6 @@ public class DefaultLimitsLoader implements ILimitsLoader {
 		
 		String maximumChosenSpotTypes = properties.getProperty(MAXIMUM_CHOSEN_SPOT_TYPES_LIMIT);
 		limits.setMaxChosenSpotTypesNum(Integer.parseInt(maximumChosenSpotTypes));
-		
-		return limits;
 	}
 
 }

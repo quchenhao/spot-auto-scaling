@@ -20,11 +20,10 @@ public interface IScalingPoliciesConfigurationLoader {
 	/**
 	 * @Title: load 
 	 * @Description: load from input stream
-	 * @param limits the limits
 	 * @param inputStream the input stream
 	 * @return the scaling policies configuration
 	 * @throws Exception
 	 * @throws
 	 */
-	public IScalingPoliciesConfiguration load(Limits limits, InputStream inputStream) throws Exception;
+	public IScalingPoliciesConfiguration load(InputStream inputStream) throws Exception;
 }

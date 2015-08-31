@@ -1,7 +1,6 @@
 package auto_scaling.scaling_strategy;
 
 import auto_scaling.configuration.IScalingPoliciesConfiguration;
-import auto_scaling.configuration.Limits;
 import auto_scaling.core.SystemStatus;
 
 /** 
@@ -28,11 +27,4 @@ public interface IScalingUpSystemStatusCalculator {
 	 * @throws
 	 */
 	public void setScalingPoliciesConfiguration(IScalingPoliciesConfiguration scalingPoliciesConfiguration);
-	/**
-	 * @Title: setLimits 
-	 * @Description: set the instance limitations
-	 * @param limits the instance limitations
-	 * @throws
-	 */
-	public void setLimits(Limits limits);
 }

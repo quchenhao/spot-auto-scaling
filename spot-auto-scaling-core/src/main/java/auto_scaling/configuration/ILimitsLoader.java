@@ -18,9 +18,8 @@ public interface ILimitsLoader {
 	 * @Title: load 
 	 * @Description: load from input stream
 	 * @param inputStream
-	 * @return the limits
 	 * @throws Exception
 	 * @throws
 	 */
-	public Limits load(InputStream inputStream) throws Exception;
+	public void load(InputStream inputStream) throws Exception;
 }
