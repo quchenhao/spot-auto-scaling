@@ -33,11 +33,11 @@ For other configurations, users need to replace all the xxx with their own setti
 
 To run the simulation version
 
-java -Dlog4j.configurationFile=xxx/log4j2.xml -jar spot-auto-scaling-cloudsim-0.0.1-SNAPSHOT-jar-with-dependencies.jar $path_to_configuration_folder
+java -jar spot-auto-scaling-cloudsim-0.0.1-SNAPSHOT-jar-with-dependencies.jar -Dlog4j.configurationFile=xxx/log4j2.xml $path_to_configuration_folder
 
 To run the aws version
 
-java -Dlog4j.configurationFile=xxx/log4j2.xml -jar spot-auto-scaling-cloudsim-0.0.1-SNAPSHOT-jar-with-dependencies.jar $path_to_configuration_folder
+java -jar spot-auto-scaling-cloudsim-0.0.1-SNAPSHOT-jar-with-dependencies.jar -Dlog4j.configurationFile=xxx/log4j2.xml $path_to_configuration_folder
 
 Reminder
 
