@@ -7,7 +7,6 @@ import java.util.Set;
 
 import auto_scaling.cloud.InstanceStatus;
 import auto_scaling.cloud.InstanceTemplate;
-import auto_scaling.cloud.RunningStatus;
 import auto_scaling.core.SystemStatus;
 import auto_scaling.event.Event;
 import auto_scaling.event.SpotInstancesTerminationEvent;
@@ -70,7 +69,6 @@ public class SpotInstancesTerminationEventHandler extends EventHandler {
 		Set<InstanceTemplate> types = new HashSet<InstanceTemplate>();
 		
 		for (InstanceStatus instanceStatus : terminatingInstances) {
-			instanceStatus.setRunningStatus(RunningStatus.SHUTTING_DOWN);
 			types.add(instanceStatus.getType());
 		}
 		
@@ -79,6 +77,7 @@ public class SpotInstancesTerminationEventHandler extends EventHandler {
 		//remove the spot types and set overloaded if overloading happens
 		synchronized (systemStatus) {
 			systemStatus.removeChosenSpotTypes(types);
+			systemStatus.removeInstances(terminatingInstances);
 			eventHandlerLog.info(logFormatter.getMessage("total available capacity: " + systemStatus.getAvailableCapacity()));
 			eventHandlerLog.info(logFormatter.getMessage("total nominal capacity: " + systemStatus.getNominalCapacity()));
 			

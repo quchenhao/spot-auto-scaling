@@ -177,7 +177,7 @@ public class SpotPriceUpdateEventHandler extends EventHandler {
 					unchosenSpotCostEfficiencyInfo = unchosenSpotCostEfficiencyInfos.get(i);
 				}
 				SpotBiddingInfo chosenSpotCostEfficiencyInfo = chosenSpotCostEfficiencyInfos.get(i);
-				if (unchosenSpotCostEfficiencyInfo != null && unchosenSpotCostEfficiencyInfo.getTotalCostEachHour() < chosenSpotCostEfficiencyInfo.getTotalCostEachHour()
+				if (unchosenSpotCostEfficiencyInfo != null && unchosenSpotCostEfficiencyInfo.getTotalCostEachHour() + 0.01 < chosenSpotCostEfficiencyInfo.getTotalCostEachHour()
 						&& unchosenSpotCostEfficiencyInfo.getTruthfulBiddingPrice() > unchosenSpotCostEfficiencyInfo.getMarketPrice()) {
 					systemStatus.handOver(chosenSpotCostEfficiencyInfo.getInstanceTemplate(), unchosenSpotCostEfficiencyInfo.getInstanceTemplate());
 				}
