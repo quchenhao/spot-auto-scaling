@@ -3,7 +3,7 @@ An auto-scaling tool for web applications using spot instances
 
 Overview
 
-This tool aims to help web application providers reliably and cost-efficiently scale their application using spot instances. It provides an implementation for Amazon EC2 and a simluation verstion for tesing and concept validation. For the details of the algorithm, please refer to the paper
+This tool aims to help web application providers reliably and cost-efficiently scale their application using spot instances. It provides an implementation for Amazon EC2 and a simluation verstion for tesing and concept validation. For the details of the algorithm, please refer to the paper http://arxiv.org/abs/1509.05197
 
 Chenaho Qu, Rodrigo N. Calheiros, and Rajkumar Buyya, Reliable and Cost-efficeint Auto-Scaling of Web Applications Using Heterogeneous Spot Instances.
 
