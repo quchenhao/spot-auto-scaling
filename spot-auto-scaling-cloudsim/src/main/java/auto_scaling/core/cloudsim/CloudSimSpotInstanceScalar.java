@@ -103,7 +103,7 @@ public class CloudSimSpotInstanceScalar extends SpotInstanceScalar {
 		}
 		LogFormatter logFormatter = LogFormatter.getLogFormatter();
 		
-		if (args.length < 3) {
+		if (args.length < 2) {
 			System.out.println("parameters properties_file start_simulation_time");
 			System.exit(1);
 		}
@@ -146,7 +146,8 @@ public class CloudSimSpotInstanceScalar extends SpotInstanceScalar {
 			IInstanceConfigurationLoader instanceConfigurationLoader = (IInstanceConfigurationLoader)(Class.forName(instanceConfigurationLoaderClass).newInstance());
 			File file = new File(directory, instanceConfigurationFile);
 			InputStream instanceConfigurationStream = new FileInputStream(file);
-			boolean isDynamicCapacityEnabled = Boolean.parseBoolean(args[1]);
+			String dynamicResourceMargin = properties.getProperty(DYNAMIC_RESOURCE_MARGIN);
+			boolean isDynamicCapacityEnabled = Boolean.parseBoolean(dynamicResourceMargin);
 			instanceConfigurationLoader.loadInstanceTemplateManager(instanceConfigurationStream, isDynamicCapacityEnabled);
 			instanceConfigurationStream.close();
 		} catch (Exception e) {

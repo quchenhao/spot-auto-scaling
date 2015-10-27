@@ -231,8 +231,13 @@ public abstract class InstanceStatus {
 		return dump;
 	}
 
+	/**
+	 * @Title: setPublicUrl 
+	 * @Description: set the public url
+	 * @param publicUrl the public url
+	 * @throws
+	 */
 	public void setPublicUrl(String publicUrl) {
 		this.publicUrl = publicUrl;
 	}
-	
 }
