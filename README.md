@@ -37,7 +37,7 @@ java -jar spot-auto-scaling-cloudsim-0.0.1-SNAPSHOT-jar-with-dependencies.jar -D
 
 To run the aws version
 
-java -jar spot-auto-scaling-cloudsim-0.0.1-SNAPSHOT-jar-with-dependencies.jar -Dlog4j.configurationFile=xxx/log4j2.xml $path_to_configuration_folder
+java -jar spot-auto-scaling-cloudsim-0.0.1-SNAPSHOT-jar-with-dependencies.jar -Dlog4j.configurationFile=xxx/log4j2.xml $path_to_configuration_folder start_time
 
 Reminder
 
