@@ -1,4 +1,4 @@
-package auto_scaling.configuration.aws;
+package auto_scaling.configuration;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,9 +18,9 @@ import org.xml.sax.SAXException;
 import auto_scaling.cloud.ApplicationResourceUsageProfile;
 import auto_scaling.cloud.DynamicCapacityInstanceTemplate;
 import auto_scaling.cloud.InstanceTemplate;
+import auto_scaling.cloud.OSs;
 import auto_scaling.cloud.ResourceType;
 import auto_scaling.cloud.StaticCapacityInstanceTemplate;
-import auto_scaling.cloud.aws.AWSOSs;
 import auto_scaling.configuration.IInstanceConfigurationLoader;
 import auto_scaling.configuration.IllegalXMLFileException;
 import auto_scaling.core.InstanceTemplateManager;
@@ -33,7 +33,7 @@ import auto_scaling.core.SpotPricingManager;
 * @date 05/06/2015 2:26:47 pm 
 *  
 */
-public class AWSXMLInstanceConfigurationLoader implements IInstanceConfigurationLoader{
+public class XMLInstanceConfigurationLoader implements IInstanceConfigurationLoader{
 
 	/* (non-Javadoc) 
 	* <p>Title: loadInstanceTemplateManager</p> 
@@ -215,7 +215,7 @@ public class AWSXMLInstanceConfigurationLoader implements IInstanceConfiguration
 			String isSupportHvm = template.getAttributes().getNamedItem(IS_SUPPORT_HVM).getNodeValue();
 			String isSupportParavirtual = template.getAttributes().getNamedItem(IS_SUPPORT_PARAVIRTUAL).getNodeValue();
 
-			if (!AWSOSs.isSupported(os)) {
+			if (!OSs.isSupported(os)) {
 				throw new IllegalXMLFileException("unsupported " + OS + ": "
 						+ os);
 			}

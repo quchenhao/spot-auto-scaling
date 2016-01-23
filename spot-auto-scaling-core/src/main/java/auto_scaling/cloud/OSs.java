@@ -1,4 +1,4 @@
-package auto_scaling.cloud.aws;
+package auto_scaling.cloud;
 
 /** 
 * @ClassName: AWSOSs 
@@ -7,7 +7,7 @@ package auto_scaling.cloud.aws;
 * @date 04/06/2015 12:27:55 pm 
 *  
 */
-public class AWSOSs {
+public class OSs {
 
 	/** 
 	* @Fields LINUX_UNIX : linux and unix

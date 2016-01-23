@@ -70,8 +70,32 @@ import auto_scaling.util.cloudsim.VmFactory;
 * @date 06/06/2015 12:28:47 pm 
 *  
 */
-public class CloudSimSpotInstanceScalar extends SpotInstanceScalar {
+public class CloudSimSpotInstanceScalar extends SpotInstanceScalar{
 
+	protected static final String CLOUD_CONFIGURATION_LOADER = "cloud_configuration_loader";
+	protected static final String CLOUD_CONFIGURATION_FILE = "cloud_configuration_file";
+	protected static final String INSTANCE_CONFIGURATION_LOADER = "instance_configuration_loader";
+	protected static final String INSTANCE_CONFIGURATION_FILE = "instance_configuration_file";
+	protected static final String SYSTEM_STATUS_LOADER = "system_status_loader";
+	protected static final String SCALING_POLICIES_CONFIGURATION_LOADER = "scaling_policies_configuration_loader";
+	protected static final String SCALING_POLICIES_CONFIGURATION_FILE = "scaling_policies_configuration_file";
+	protected static final String MONITORS_LOADER = "monitors_loader";
+	protected static final String MONITORS_CONFIGURATION_FILE = "monitors_configuration_file";
+	protected static final String EVENT_HANDLERS_LOADER = "event_handlers_loader";
+	protected static final String EVENT_HANDLERS_CONFIGURATION_FILE = "event_handlers_configuration_file";
+	protected static final String EVENT_CRITICAL_LEVEL_LOADER = "event_critical_level_loader";
+	protected static final String EVENT_CRITICAL_LEVEL_CONFIGURATION_FILE = "event_critical_level_configuration_file";
+	protected static final String FAULT_TOLERANT_LEVEL = "fault_tolerant_level";
+	protected static final String LOAD_BALANCER_LOADER = "load_balancer_loader";
+	protected static final String LOAD_BALANCER_CONFIGURATION_FILE = "load_balancer_configuration_file";
+	protected static final String LIMITS_CONFIGURATION_LOADER = "limits_configuration_loader";
+	protected static final String LIMITS_CONFIGURATION_FILE = "limits_configuration_file";
+	protected static final String CAPACITY_CALCULATOR_LOADER = "capacity_calculator_loader";
+	protected static final String CAPACITY_CALCULATOR_CONFIGURATION_FILE = "capacity_calculator_configuration_file";
+	protected static final String ONLINE_TASK_LOADER = "online_task_loader";
+	protected static final String ONLINE_TASK_CONFIGURATION_FILE = "online_task_configuration_file";
+	protected static final String SYSTEM_CONF = "system.properties";
+	protected static final String DYNAMIC_RESOURCE_MARGIN = "dynamic_resource_margin";
 	private static final String WORKLOAD_GENERATOR_LOADER = "workload_generator_loader";
 	private static final String WORKLOAD_GENERATOR_CONFIGURATION_FILE = "workload_generator_configuration_file";
 	private static final String DISTRIBUTION_SETTINGS_LOADER = "distribution_settings_loader";
@@ -87,13 +111,25 @@ public class CloudSimSpotInstanceScalar extends SpotInstanceScalar {
 	private static final String SUMMARY_PERIOD_LENGTH = "summary_period_length";
 	private static final String LIFE_LENGTH = "life_length";
 	private static final String REQUEST_TIMEOUT = "request_timeout";
+	
 	/**
 	 * @Title: main 
 	 * @Description: the main method
-	 * @param args the_home_directory_of_configuration_files the_start_timestamp
+	 * @param args the file path to the configuration file folder and the start time
 	 * @throws
 	 */
 	public static void main(String[] args) {
+		CloudSimSpotInstanceScalar cloudSimSpotInstanceScalar = new CloudSimSpotInstanceScalar();
+		cloudSimSpotInstanceScalar.start(args);
+	}
+	
+	/* (non-Javadoc) 
+	* <p>Title: start</p> 
+	* <p>Description: </p> 
+	* @param args 
+	* @see auto_scaling.core.SpotInstanceScalar#start(java.lang.String[]) 
+	*/
+	public void start(String[] args) {
 		try {
 			LogFormatter.initialize(CloudSimLogFormatter.class);
 		} catch (InstantiationException | IllegalAccessException e) {
@@ -399,7 +435,7 @@ public class CloudSimSpotInstanceScalar extends SpotInstanceScalar {
 		
 		cloudSimBroker.createVmsAfter(initialVms, 2);
 		Date startTime = null;
-		startTime = new Date(Long.parseLong(args[2]));
+		startTime = new Date(Long.parseLong(args[1]));
 		
 		mainLog.info(logFormatter.getMessage("Set start simulation time at " + startTime));
 		//System.out.println(startTime.toGMTString());
