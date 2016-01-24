@@ -53,7 +53,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>auto_scaling.core.SpotInstanceScalar</mainClass>
+							<mainClass>auto_scaling.core.aws.AWSSpotInstanceScalar</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
