@@ -99,7 +99,8 @@ public class ScalingThresholdCapacityCalculator implements ICapacityCalculator{
 		long capacity = Long.MAX_VALUE;
 		for (Entry<String, Number> entry : resourceProfile.entrySet()) {
 			String resourceTypeString = entry.getKey();
-			long temp_capacity = (long)(instanceTemplate.getResourceAmount(resourceTypeString).doubleValue() * 0.9 /
+			ResourceType resourceType = ResourceType.getByName(resourceTypeString);
+			long temp_capacity = (long)(instanceTemplate.getResourceAmount(resourceTypeString).doubleValue() *  resourceType.getMaxThreshold() /
 					entry.getValue().doubleValue());
 			
 			if (temp_capacity < capacity) {
